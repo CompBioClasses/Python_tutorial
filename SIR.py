@@ -17,7 +17,7 @@ R0 = 0
 params = {}
 params['beta'] = 1.4247
 params['gamma'] = 0.14286
-params['mu'] = 0.01
+params['mu'] = 0.02
 
 
 ##################################
@@ -39,8 +39,8 @@ def SIR_ODEs(t,x,params):
     S = x[0]; I = x[1]; R = x[2]
     dx = np.zeros(3)
 
-    dx[0] = -params['beta']*S*I + params['mu']*(I+R)
-    dx[1] = params['beta']*S*I - params['gamma']*I - params['mu']*I
+    dx[0] = -params['beta']*S*I + params['mu']*R
+    dx[1] = params['beta']*S*I - params['gamma']*I
     dx[2] = params['gamma']*I - params['mu']*R
 
     return dx

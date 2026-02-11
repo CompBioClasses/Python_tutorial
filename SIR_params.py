@@ -17,7 +17,7 @@ R0 = 0
 params = {}
 params['beta'] = 1.4247
 params['gamma'] = 0.14286
-params['mu'] = 0.01
+params['mu'] = 0.02
 
 beta_list = np.linspace(0,4,10001) #up this by an order of magnitude to slow it down
 
@@ -40,8 +40,8 @@ def SIR_ODEs_beta(t,x,params,beta):
     S = x[0]; I = x[1]; R = x[2]
     dx = np.zeros(3)
 
-    dx[0] = -beta*S*I + params['mu']*(I+R)
-    dx[1] = beta*S*I - params['gamma']*I - params['mu']*I
+    dx[0] = -beta*S*I + params['mu']*R
+    dx[1] = beta*S*I - params['gamma']*I
     dx[2] = params['gamma']*I - params['mu']*R
 
     return dx
