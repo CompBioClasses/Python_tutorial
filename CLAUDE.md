@@ -20,17 +20,38 @@ supporting files for use by the instructor, or data.
 
 ## Environment & Dependencies
 
-- Python 3.5+ (Conda-managed, configured in .vscode/settings.json)
+- Python 3.12 via **Miniforge3** at `C:\Users\mountaindust\miniforge3\` (Python 3.12.10, numpy 2.3+)
 - Core: numpy, scipy, matplotlib
 - Advanced: SALib (sensitivity analysis, install via `conda install -c conda-forge salib`), pandas, multiprocessing (stdlib)
+
+## Shell / Python Execution Notes
+
+The Bash tool in Claude Code (VSCode extension on Windows/MSYS) fails silently for native bash
+commands (even `echo` exits with code 1). **Always use PowerShell to run Python:**
+
+```
+powershell -Command "& 'C:\Users\mountaindust\miniforge3\python.exe' script.py"
+```
+
+For inline Python snippets, pipe a here-doc via PowerShell:
+
+```
+powershell -Command "
+'import numpy as np
+print(np.__version__)
+' | & 'C:\Users\mountaindust\miniforge3\python.exe'
+"
+```
+
+Do **not** use `conda run`, bare `python`, or bash-style commands — they will fail.
 
 ## Running Code
 
 - **Jupyter notebooks** (numbered 0-5 plus supplementary): Primary teaching medium, run cells sequentially
-- **Standalone scripts**: `python scriptname.py` (e.g., `python SIR.py`, `python aparse.py 3 -c blue`)
-- **Profiling**: `python -m cProfile -o sl.prof slow_prog.py` then `snakeviz sl.prof`
-- **Sensitivity analysis**: `python Run_Sobol.py -N 1000 -n 4 -o analysis`
-- **Parallel runs**: `python SIR_parallel.py` (uses multiprocessing.Pool)
+- **Standalone scripts**: `powershell -Command "& 'C:\Users\mountaindust\miniforge3\python.exe' scriptname.py"`
+- **Profiling**: run `python -m cProfile -o sl.prof slow_prog.py` then `snakeviz sl.prof` (via PowerShell)
+- **Sensitivity analysis**: `python Run_Sobol.py -N 1000 -n 4 -o analysis` (via PowerShell)
+- **Parallel runs**: `python SIR_parallel.py` (uses multiprocessing.Pool, via PowerShell)
 
 ## Architecture
 
