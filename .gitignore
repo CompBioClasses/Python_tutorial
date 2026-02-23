@@ -2,6 +2,9 @@ __pycache__/
 .vscode/
 .ipynb_checkpoints/
 *.h5
-*.npy
+x_values.npy
+y_values.npy
+xy_values.npz
+demo_output.csv
 .DS_Store
 .claude/
