@@ -1,8 +1,10 @@
-'''Example of solving an ODE with scipy'''
+'''Example of solving an ODE in another file.'''
 
 import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
+
+from scripting import logistic_eqn
 
 tstart = 0 # start solving the ODE at time t=0
 tstop = 60 # stop at time t=100
@@ -15,26 +17,8 @@ params['r'] = 1
 params['K'] = 1000
 
 
-##################################
-
-# define ode equations.
-def logistic_eqn(t, x, params):
-    '''This function specifies the ODE(s) to be solved. It must take in the
-    current time as the first argument and the current value(s) of the
-    independent variables as the second argument. You can also pass in parameters
-    with a third argument. I like to use a dictionary for this, as I can give
-    the parameters names and don't have to keep track of the order in which I
-    put them into a list or somesuch.
-    
-    BE CAREFUL: dictionaries are mutable.
-    '''
-    
-    dxdt = params['r']*x*(1-x/params['K']) # logistic equation
-
-    return dxdt
-
-
-# Solve the ODE with given initial condition, start time, end time, and parameters.
+##############################################################################
+#                         Solve the ODE and plot it!                         #
 
 y0 = np.array([x0]) # initial condition must be given as an array
 
