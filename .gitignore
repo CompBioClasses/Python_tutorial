@@ -6,5 +6,6 @@ x_values.npy
 y_values.npy
 xy_values.npz
 demo_output.csv
+demo_with.txt
 .DS_Store
 .claude/
