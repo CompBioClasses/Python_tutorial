@@ -98,7 +98,9 @@ def latin_hypercube_sample(n_samples, param_ranges):
 
     Latin Hypercube Sampling divides each parameter's range into n equal
     intervals and places exactly one sample in each interval, then shuffles
-    so that the parameters are not correlated with each other.
+    so that the parameters are not correlated with each other. (Note: the
+    result is not guaranteed to be a latin square, but this is not needed for 
+    LHS-based sensitivity analysis.)
 
     Parameters
     ----------
